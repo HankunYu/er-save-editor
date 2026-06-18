@@ -1,0 +1,38 @@
+[package]
+name = "er-qs"
+version = "0.3.0"
+edition = "2021"
+description = "Elden Ring save toolkit for Linux (Proton): quick save/load + save inspector + GUI"
+
+[lib]
+name = "er_qs"
+path = "src/lib.rs"
+
+[[bin]]
+name = "er-qs"
+path = "src/main.rs"
+
+# GUI / TUI binaries — feature-gated so the CLI stays dependency-free.
+[[bin]]
+name = "er-gui"
+path = "src/bin/er-gui.rs"
+required-features = ["gui"]
+
+[[bin]]
+name = "er"
+path = "src/bin/er.rs"
+required-features = ["tui"]
+
+[dependencies]
+eframe = { version = "0.29", optional = true }
+ratatui = { version = "0.29", optional = true }
+md5 = "0.7"
+
+[features]
+gui = ["dep:eframe"]
+tui = ["dep:ratatui"]
+
+[profile.release]
+opt-level = 2
+lto = true
+strip = true
