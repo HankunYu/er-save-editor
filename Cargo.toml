@@ -3,6 +3,8 @@ name = "er-qs"
 version = "0.3.0"
 edition = "2021"
 description = "Elden Ring save toolkit for Linux (Proton): quick save/load + save inspector + GUI"
+license = "MIT"
+repository = "https://github.com/HankunYu/er-save-editor"
 
 [lib]
 name = "er_qs"
